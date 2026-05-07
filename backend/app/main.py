@@ -9,7 +9,6 @@ from backend.app.models.user import User
 from backend.app.schemas.user import (
     UserCreate,
     UserResponse,
-    UserLogin,
     TokenResponse,
 )
 
@@ -19,6 +18,8 @@ from backend.app.security import (
     create_access_token,
     get_current_user,
 )
+
+from backend.app.routers import applications
 
 
 app = FastAPI()
@@ -36,6 +37,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+app.include_router(applications.router)
 
 @app.get("/")
 def home():
@@ -115,3 +118,5 @@ def login_user(
 @app.get("/me", response_model=UserResponse)
 def get_logged_in_user(current_user: User = Depends(get_current_user)):
     return current_user
+
+

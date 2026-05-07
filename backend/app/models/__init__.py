@@ -1,2 +1,2 @@
 from .user import User
-from .aplications import Application
+from .application import Application
