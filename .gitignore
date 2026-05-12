@@ -5,3 +5,9 @@ __pycache__/
 .DS_Store
 node_modules/
 alembic.ini
+
+# Graphify generated files
+graphify-out/
+
+# Gemini local settings/hooks
+.gemini/
